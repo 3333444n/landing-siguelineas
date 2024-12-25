@@ -1,20 +1,22 @@
 /* General */
 :root {
     --blue1:  #33b9ff;
-    --blue2:  #232f5b;
+    --blue2:  #1E90FF;
     --blue3:  #23419d;
     --blue4:  #0e1a26;
     --orange:  #ff8700;
     --orange2:  #d67100;
-    --font1: ;
-    --font2: ;
+    --font1: 'Fantasque';
+    --font1bold: 'FantasqueBold';
+    --font2: 'ppRegular';
+    --font2light: 'ppLight';
 
     font-size: 16px;
 
     --button-padding: clamp(0.5rem, 1.2vw, 1rem); /* Ajusta según el ancho del viewport */
     --button-font-size: clamp(0.8rem, 1.5vw, 1.2rem); /* Texto fluido */
-    --button-min-width: 7rem; /* Mínimo: 96px */
-    --button-min-height: 1.1rem; /* Mínimo: 40px */
+    --button-max-width: clamp(7rem, 8rem, 8rem); /* Mínimo: 96px */
+    --button-min-height: clamp(1rem, 1rem, 1rem); /* Mínimo: 40px */
 }
 
 @font-face {
@@ -76,30 +78,25 @@
     padding: 12vh 20px;
     text-align: center;
     height: auto;
-    width: 100%;
+    max-width: 100%;
 }
 
 .hero {
     background: white;
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    text-align: center;
 }
 
 .features {
-    height: fit-content;
+    border-radius: 30px 30px 0 0;
+    min-height: fit-content;
     background: rgb(14,26,38);
     background: linear-gradient(0deg, rgba(14,26,38,1) 0%, rgba(4,33,73,1) 100%); 
 }
 
 
 .github {
-    /* border: solid red; */
-    display: flex;
-    height: 100vh;
+    min-height: fit-content;;
     align-items: center;
-    justify-content: space-between;
     background-color: var(--blue4);
     color: #fff;
 }
@@ -113,6 +110,7 @@
 }
 
 .faq {
+    border-radius: 30px 30px 0 0;
     height: auto;
     background-color: var(--blue4);
     color: #fff;
@@ -125,8 +123,15 @@
 }
 
 img {
-    max-width: 100%;
+    max-width: clamp(200px, 100%, 500px);
     height: auto;
+    margin: 0 auto;
+}
+
+a {
+    display: inline-block;
+    text-decoration: none;
+    color: inherit;
 }
 
 /* Hamburguer Menu */
@@ -153,7 +158,7 @@ img {
   }
   .menu__btn {
     position: fixed;
-    top: 8vh;
+    top: 57px;
     right: 20px;
     width: 26px;
     height: 26px;
@@ -227,10 +232,21 @@ img {
     border-radius: 9999px;
   }
 
+/* Animación Escritura */
+.morphing {
+    display: inline-block;
+    font-family: 'ppRegular', sans-serif;
+    white-space: nowrap;
+    color: black;
+    transition: color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+
 /* Status bar */
 .statusbar {
     position: fixed;
-    width: 100%;
+    max-width: 100%;
     height: 3vh;
     background-color: var(--orange);
     color: white;
@@ -281,8 +297,9 @@ img {
 }
 
 .navbar .logo {
-    font-size: 1.5rem;
-    flex: 0 1 auto;
+    display: block;
+    height: 40px;
+    margin: 3px;
 }
 
 .nav-links {
@@ -308,10 +325,10 @@ img {
 .navbar .comprar-btn {
     color: #fff;
     padding: var(--button-padding);
-    border: solid 1px var(--blue1);
     border-radius: 999px;
-    min-width: var(--button-min-width);
+    max-width: var(--button-max-width);
     min-height: var(--button-min-height);
+    border: solid 1px var(--blue1);
     text-decoration: none;
     display: flex;
     align-items: center;
@@ -335,55 +352,56 @@ img {
 
 /* Hero Section */
 .hero .header {
-    /* border: solid black; */
-    margin: 5vh 0 0 0;
-    padding: 5vw;
+    margin: 0 auto;
+    max-width: 100%;
     display: flex;
-    width: 50vw;
     flex-direction: column;
     justify-content: center;
     max-width: fit-content;
     align-items: center;
 }
 
-.img-carrito-container {
-    width: 100%;
-    max-width: 600px; /* Ajusta el tamaño máximo si es necesario */
-    margin: 0 auto;
-    display: block;
-}
-
 .carrito-img {
-    max-width: 90%;
+    display: block;
     padding: 2vw 5vw 0 0;
     height: auto;
 }
 
 
 .hero h1 {
-    font-size: clamp(1rem, 5rem, 10rem);
+    font-size: clamp(2.5rem, 20vw - 3rem, 7rem);
     font-family: 'ppRegular', sans-serif;
     line-height: 1;
+    margin-top: 50px;
     margin-bottom: 20px;
     color: black;
 }
 
 .hero p {
-    font-size: clamp(0.75rem, 1vw, 2rem);
+    font-size: clamp(0.75rem, 4.5vw - 0.5rem, 1.5rem);
     margin-bottom: 30px;
     color: #555;
-    max-width: 200%;
+    max-width: clamp(20rem, 80vw, 50rem);
 }
 
 .hero button {
+    width: 200px;
+    min-height: var(--button-min-height);
+    border: solid 1px var(--blue1);
     background-color: var(--orange);
     border: solid 1.5px black;
     color: #fff;
-    padding: 10px 20px;
+    padding: var(--button-padding);
+    margin: 10px auto;
     font-size: 1rem;
     border-radius: 999px;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+.hero .btn-accion {
+    background-color: white;
+    color: black;
 }
 
 .hero button:hover {
@@ -395,9 +413,9 @@ img {
     height: auto;
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 3fr));
     gap: 20px;
-    max-width: 1200px;
+    max-width: 100%;
     margin: 0 auto;
     padding: 20px;
 }
@@ -430,54 +448,48 @@ img {
 }
 
 /* Github */
-.github h2 {
-    font-family: 'ppRegular', sans-serif;
-    margin: 50px;
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    max-width: 40vw;
+
+.github.header{
+    padding: 60px 0 0 0;
 }
 
+.github h2 {
+    padding: 50px 0 0 0;
+}
 
-.btn-tutoriales {
+.github h2, .github h2 a {
+    font-family: 'ppRegular', sans-serif;
+    margin: 0 auto;
+    font-size: clamp(2.5rem, 5vw, 5rem);
+    max-width: clamp(40rem, 80vw, 100rem);
+}
+
+.btn-tutoriales, .btn-manual {
     padding: 10px 20px;
     border: 2px solid var(--blue1);
     color: #fff;
-    margin: 0 0 0 50px;
+    margin: 1rem auto;
     text-decoration: none;
     border-radius: 999px;
     transition: background-color 0.3s;
 }
 
-.btn-tutoriales:hover {
-    background-color: var(--blue3);
-}
-
-.btn-manual {
-    padding: 10px 20px;
-    margin: 50px 0 0 50px;
-    border: 2px solid var(--blue1);
-    color: #fff;
-    text-decoration: none;
-    border-radius: 9999px;
-    transition: background-color 0.3s;
-}
-
-.btn-manual:hover {
+.btn-tutoriales:hover, .btn-manual:hover {
     background-color: var(--blue3);
 }
 
 .github img {
-    width: 100%;
-    max-width: 600px; /* Ajusta el tamaño máximo si es necesario */
-    margin: 1vh;
+    max-width: clamp(100px, 50vw, 500px); /* Ajusta el tamaño máximo si es necesario */
+    margin: 50px auto;
     display: block;
+    height: auto;
 }
 
 /* Reseñas */
 .reseñas-container {
     width: 100%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 20px;
     padding: 0 20px;
     max-width: 1200px;
@@ -521,7 +533,6 @@ img {
     margin: 5px 0;
 }
 
-
 /* Sección Especificaciones */
 .specs {
     width: 100%;
@@ -534,15 +545,14 @@ img {
 
 .img-specs-container {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column;
+
 }
 
 .img-specs-container img {
-    width: 100%;
-    max-width: 600px; /* Ajusta el tamaño máximo si es necesario */
-    margin: 0 10% 0 10%;
-    display: block;
+    margin: 0 auto 50px auto;
+    max-width: clamp(200px, 50vw, 500px);
+    height: auto;
 }
 
 .specs h2 {
@@ -552,8 +562,13 @@ img {
     font-size: clamp(1.5rem, 4vw, 3rem);
 }
 
-.specs p {
+.specs-medidas {
+    margin: 0 auto 20px auto;
     font-size: clamp(1rem, 2vw, 1.5rem);
+}
+
+.specs p {
+    font-size: clamp(0.5rem, 1vw, 1rem);
     max-width: 50vw;
     color: #555;
     margin-top: 10px;
@@ -639,33 +654,49 @@ img {
     max-width: 50vw;
 }
 
-/* Media Query para ajustes extremos */
-@media (max-width: 480px) {
-    .hero {
-        flex-direction: column;
-        text-align: center;
-    }
-    .features-container,
-    .reseñas-container,
-    .faq-container {
-        grid-template-columns: 1fr;
-    }
-    .github {
-        flex-direction: column;
-    }
-    .img-carrito img,
-    .img-specs-container img {
-        max-width: 80%; /* Adapta a pantallas muy pequeñas */
-    }
-    .img-specs-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-    }
+
+/* botones */
+button a, .btn-cta a, .btn-accion a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: var(--button-min-height);
+    color: inherit; /* Hereda el color del botón */
+    text-decoration: none; /* Sin subrayado */
 }
 
-@media (max-width: 870px) {
+button, .btn-cta, .btn-accion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.anchor {
+    position: relative;
+    text-decoration: none;
+    color: inherit; /* Mantiene el color actual del texto */
+}
+
+.anchor::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -1px; /* Ajusta la distancia de la línea al texto */
+    width: 0;
+    height: 2px; /* Grosor de la línea */
+    background: var(--blue1); /* Color del subrayado */
+    transition: width 0.3s ease; /* Suaviza la animación */
+}
+
+.anchor:hover::after {
+    width: 100%; /* La línea se expande completamente */
+}
+
+/* Media Queries */
+
+@media (max-width: 950px) {
     .hamburger-menu {
         visibility: visible;
     }
@@ -675,38 +706,41 @@ img {
     .comprar-btn {
         visibility: hidden;
     }
-    .github {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+}
 
-    .github .header {
-        margin: 0;
+
+@media (min-width: 900px) {
+    .features-container {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .reseñas-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+@media (min-width: 1400px) {
+    .hero.section {
         display: flex;
-        flex-direction: column;
-    }
-
-    .github-botones {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .btn-tutoriales, .btn-manual {
-        margin: 10px 0;
-        padding: clamp(0.6rem, 1vw, 1rem) clamp(1rem, 3vw, 2rem);
-    }
-
-    .btn-tutoriales:hover, .btn-manual:hover {
-        background-color: var(--blue3);
-        .hero .carrito-img {
-        max-width: 80%; /* Reduce el tamaño en tablets */
     }
     .img-specs-container {
-        flex-direction: column; /* Las imágenes en especificaciones se apilan */
-        align-items: center;
+        margin: 0 auto; /* Centra el contenedor horizontalmente */
+        margin-bottom: 40px;
+        display: flex;
+        flex-direction: row;
+        justify-content: center; /* Centra horizontalmente los elementos */
+        align-items: center; /* Centra verticalmente */
+        gap: 250px; /* Espaciado uniforme entre las imágenes */
     }
+
     .img-specs-container img {
-        margin-bottom: 20px; /* Espaciado entre imágenes apiladas */
+        display: block;
+        margin: 0; /* Quita el margen extra */
+        max-width: clamp(150px, 30%, 300px); /* Tamaño dinámico */
+        max-height: clamp(100px, 20%, 200px);
+        object-fit: contain; /* Evita la distorsión */
+    }
+    .img-specs-container img:first-child {
+        max-width: clamp(200px, 35%, 350px); /* Más grande que la imagen de la derecha */
+        max-height: clamp(150px, 25%, 250px);
     }
 }
